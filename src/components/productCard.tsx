@@ -1,4 +1,6 @@
 import { FaPlus } from "react-icons/fa";
+import { server } from "../redux/reducer/store";
+import { cartItem } from "../types/types";
 
 type PrdouctProps = {
   productId: string;
@@ -6,40 +8,41 @@ type PrdouctProps = {
   name: string;
   price: number;
   stock: number;
-  handler: () => void;
+  handler: (cartitem: cartItem) => string | undefined;
 };
-const server = "hunain";
 
 const ProductCard = ({
   productId,
   price,
-  name, 
+  name,
   photo,
   stock,
   handler,
 }: PrdouctProps) => {
-  return(
-  
-  <div className="product-card">
-    <img src={photo} alt={name} />
-    <p>{name}</p>
-    <span>${price}</span>
-    
-    <div>
-      <button onClick={() => handler()}>
-      <FaPlus/>
-      </button>
+  return (
+    <div className="product-card">
+      <img src={`${server}/${photo}`} alt={name} />
+      <p>{name}</p>
+      <span>${price}</span>
+
+      <div>
+        <button
+          onClick={() =>
+            handler({
+              productId,
+              photo,
+              name,
+              price,
+              quantity: 1,
+              stock,
+            })
+          }
+        >
+          <FaPlus />
+        </button>
+      </div>
     </div>
-  </div>
-  )
-
-
+  );
 };
 
-
-
-
-
 export default ProductCard;
-
-

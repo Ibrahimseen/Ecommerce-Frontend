@@ -1,15 +1,18 @@
+
+
 .home {
-  display: flex;
-  flex-direction: column;
-  padding: 2rem 5%;
-  height: calc(100vh - 4rem);
-  width: 100%;
-  > section {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem 5%;
+    height: calc(100vh - 4rem);
+    height: 100%;
     width: 100%;
-    height: 18.75rem;
-    margin: auto;
-    background: url("../assets/cover.jpg") no-repeat center / cover;
-  }
+    > section {
+      width: 100%;
+      height: 30.75rem;
+      margin: auto;
+      background: url("../assets/cover.jpg") no-repeat center / cover;
+    }
   > h1 {
     @include heading(1px);
     margin-top: 3rem;
@@ -73,5 +76,27 @@
         rotate: 20deg;
       }
     }
+  }
+}
+.Myimg{
+  border-radius: 100%;
+    width: 30%;
+    height: 40rem;
+    margin: auto;
+    background: url("../assets/MY photo.jpg") no-repeat center / cover;
+}
+
+@media only screen and (max-width: 500px) {
+  .Myimg{
+    border-radius: 50%;
+    width: 70%;
+    height: 20rem;
+    margin: auto;
+    p > {
+      margin: 3px 1rem;
+    }
+  }
+  .hello{
+    margin: -1px -42rem;
   }
 }

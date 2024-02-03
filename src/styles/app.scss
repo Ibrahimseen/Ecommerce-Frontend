@@ -39,20 +39,18 @@ $color3: rgb(0, 104, 136);
 @import "login";
 @import "search";
 
-
 @import "admin-styles/dashboard";
 @import "admin-styles/products";
 @import "admin-styles/chart";
 @import "admin-styles/dashboardapp";
 @import "admin-styles/mediaquery";
 
-
-.container{
+.container {
   max-width: 1367px;
-  width: 100%;  
+  width: 100%;
   overflow: auto;
   margin: auto;
-  >h1{
+  > h1 {
     @include heading;
     margin: 1rem 0;
     text-align: left;
@@ -70,34 +68,54 @@ $color3: rgb(0, 104, 136);
       color: $color3;
     }
   }
-    button {
-      border: none;
-      font-size: 1.2rem;
-      cursor: pointer;
-      background-color: transparent;
-      & :hover {
-        color: $color3;
-      }
+  button {
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    background-color: transparent;
+    & :hover {
+      color: $color3;
     }
   }
-  dialog {
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 10px;
-    width: 100px;
-    position: absolute;
-    left: calc(100% - 100px);
-    top: 8%;
-    > div {
-      @include flex(column, flex-start, center, 0.25rem);
-    }
+}
+dialog {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  width: 100px;
+  position: absolute;
+  left: calc(100% - 100px);
+  top: 8%;
+  > div {
+    @include flex(column, flex-start, center, 0.25rem);
   }
-  .heading{
-    text-align: center;
-    @include heading;
-    margin: 1rem 0;
-  }
+}
+.heading {
+  text-align: center;
+  @include heading;
+  margin: 1rem 0;
+}
 
+.not-found {
+  height: 80vh;
+  @include flex(column);
+  > svg {
+    font-size: 5rem;
+  }
+}
+.checkout-container {
+  max-width: 400px;
+  width: 100%;
+  margin: auto;
+  > form {
+    @include flex(column, flex-start, stretch, 2rem);
+    > button {
+      @include btn(1rem ,rgb(0, 104, 136), white);
+      width: 100%;
+      font-size: 1.1rem;
+    }
+  }
+}
 .admin-container {
   @include grid(1fr 4fr, 2rem);
   height: 100vh;
@@ -261,6 +279,19 @@ $color3: rgb(0, 104, 136);
     animation: loading-animation 0.5s linear infinite;
   }
 }
+.skeleton-loader {
+  display: flex;
+  flex-direction: column;
+}
+
+.skeleton-shape {
+  height: 30px;
+  width: 100%;
+  background-color: #ddd;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  animation: skeleton-loading 1.5s infinite;
+}
 
 @keyframes loading-animation {
   to {
@@ -270,5 +301,16 @@ $color3: rgb(0, 104, 136);
 @keyframes up-and-down {
   to {
     transform: translate(-50%, -20%);
+  }
+}
+@keyframes skeleton-loading {
+  0% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.6;
   }
 }
